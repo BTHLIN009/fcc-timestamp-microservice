@@ -55,3 +55,7 @@ app.get("/api/timestamp/:input",(request, response)=>{
   
   
 })
+
+app.get('/api/timestamp', (request, response)=>{
+  response.json({"unix": new Date().getTime(), "utc": new Date().toUTCString()})
+})
