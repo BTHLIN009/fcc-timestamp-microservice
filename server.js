@@ -37,7 +37,14 @@ app.get("/api/timestamp/:input",(request, response)=>{
   
   
   if((/\-/).test(inputDate)){
-    responseObj['unix']=new Date(inputDate).getTime()
+    responseObj['unix']=new Date(inputDate).getTime();
+    responseObj['utc']=new Date(inputDate).toUTCString();
+  } else{
+    
+    inputDate=parseInt(inputDate);
+    responseObj['unix']=new Date(inputDate).getTime();
+    responseObj['utc']=new Date(inputDate).toUTCString();
+    
   }
   response.json(responseObj)
   
