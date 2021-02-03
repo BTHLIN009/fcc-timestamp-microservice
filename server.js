@@ -36,7 +36,7 @@ app.get("/api/timestamp/:input",(request, response)=>{
   let inputDate=request.params.input
   
   
-  if((/\-|\\|/).test(inputDate)){
+  if((/\-|\\|[a-z]/).test(inputDate)){
     responseObj['unix']=new Date(inputDate).getTime();
     responseObj['utc']=new Date(inputDate).toUTCString();
   } else{
