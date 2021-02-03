@@ -46,6 +46,12 @@ app.get("/api/timestamp/:input",(request, response)=>{
     responseObj['utc']=new Date(inputDate).toUTCString();
     
   }
-  response.json(responseObj)
+  
+  if(!responseObj['utc'] || !responseObj['unix']){
+    response.json({"error":"Invalid Date"})
+  } else {
+    response.json(responseObj)
+  }
+  
   
 })
